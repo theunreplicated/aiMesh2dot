@@ -66,7 +66,9 @@ manager_ref=m;
 		if(mesh->HasFaces()){
 			string faces_name="Faces";
 			manager_ref->add(meshname+"->"+faces_name+";");
-
+			stringstream numfaces;
+			numfaces<<mesh->mNumFaces;
+			manager_ref->add(faces_name+"->numFaces"+numfaces.str()+";");
 				aiRender(mesh->mFaces,faces_name);
 				
 		};
@@ -80,11 +82,12 @@ s2<<face->mNumIndices;
 
 //manager_ref->add("indices");
 manager_ref->add(faces_name+"->"+"numIndices"+s2.str()+";");
+
 string indices_name="Indices";
 for(int i=0;i<face->mNumIndices;i++){
 	stringstream ind;
 	ind<<face->mIndices[i];
-	manager_ref->add(indices_name+"->"+faces_name+"->"+ind.str()+";");
+	manager_ref->add(faces_name+"->"+indices_name+"->"+ind.str()+";");
 
 }
 

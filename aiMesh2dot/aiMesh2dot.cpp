@@ -89,11 +89,11 @@ s2<<face->mNumIndices;
 //manager_ref->add("indices");
 manager_ref->add(faces_name+"->"+"numIndices"+s2.str()+";");
 
-string indices_name="Indices";
+string indices_name="Indices"+faces_name;
 for(int i=0;i<face->mNumIndices;i++){
 	stringstream ind;
 	ind<<face->mIndices[i];
-	manager_ref->add(faces_name+"->"+indices_name+"->"+ind.str()+";");
+	manager_ref->add(faces_name+"->"/*+indices_name+"->"*/+ind.str()+";");
 
 }
 

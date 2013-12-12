@@ -64,13 +64,19 @@ manager_ref=m;
 				manager_ref->add(Vertices_name+"->"+cname+";");
 			}}
 		if(mesh->HasFaces()){
+			
 			string faces_name="Faces";
 			manager_ref->add(meshname+"->"+faces_name+";");
 			stringstream numfaces;
 			numfaces<<mesh->mNumFaces;
 			manager_ref->add(faces_name+"->numFaces"+numfaces.str()+";");
 				aiRender(mesh->mFaces,faces_name);
-				
+				for(int i=0;i<mesh->mNumFaces;i++){
+				aiFace* facess=&mesh->mFaces[i];
+				stringstream fdsdas;
+				fdsdas<<i;
+				aiRender(facess,faces_name+"->Face"+fdsdas.str());
+			}
 		};
 		
 	   };
